@@ -3,6 +3,7 @@ import { IoCodeSlashOutline } from "react-icons/io5";
 import { FaEye } from "react-icons/fa";
 import Link from "next/link";
 import Modal from "../UI/Modal";
+import Image from "next/image";
 
 const ProjectCard = ({ imgUrl, title, description, tag, gitUrl, previewUrl }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -60,9 +61,17 @@ const ProjectCard = ({ imgUrl, title, description, tag, gitUrl, previewUrl }) =>
       <div className="rounded-xl overflow-hidden bg-[#0c142e] shadow-xl shadow-blue-950/70">
         <div
           className="relative bg-center bg-cover group h-52 md:h-72"
-          style={{ backgroundImage: `url(${imgUrl})` }}
+          style={{ position: "relative", overflow: "hidden" }}
           alt={title}
         >
+          <Image
+            src={imgUrl}
+            alt={title}
+            layout="fill" 
+            objectFit="cover" 
+            quality={85}
+            priority={true}
+          />
           <div className="absolute inset-0 flex items-center justify-center bg-[#181818] bg-opacity-0 group-hover:bg-opacity-80 transition-all duration-500">
             <button
               onClick={handleEyeClick}

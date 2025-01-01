@@ -24,7 +24,9 @@ const AboutSection = () => {
   return (
     <section className="text-white" id="about">
       <div className="items-center gap-8 px-4 py-8 xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-16">
-        <Image src="/images/me_bg.jpg" alt="about me" width={500} height={500} />
+        <Image src="/images/me_bg.jpg" alt="about me" width={500} height={500} quality={85}
+        loading="lazy"
+        priority={false} />
         <div className="flex flex-col h-full mt-4 text-left md:mt-0">
           <h2 className="mb-4 text-4xl font-bold text-transparent bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text">
             About Me
