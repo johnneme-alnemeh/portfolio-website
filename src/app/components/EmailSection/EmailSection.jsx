@@ -259,7 +259,7 @@ const EmailSection = () => {
                     animate={{ opacity: 1, y: 0 }}
                   >
                     <p className="flex items-center">
-                      <FaPaperPlane className="mr-2" /> Thank you for your message! I'll get back to you as soon as possible.
+                      <FaPaperPlane className="mr-2" /> Thank you for your message! I&apos;ll get back to you as soon as possible.
                     </p>
                   </motion.div>
                 )}

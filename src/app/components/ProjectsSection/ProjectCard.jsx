@@ -47,9 +47,9 @@ const ProjectCard = ({ imgUrl, title, description, tag, gitUrl, previewUrl }) =>
         </>,
         message:
         <>
-          <p className="mb-3">Thanks for your interest in this project! I'm excited to show you what I've built.</p>
-          <p className="mb-3">You'll be redirected to the live demo in just a moment. Feel free to explore and provide any feedback.</p>
-          <p>If the redirect doesn't happen automatically, you can click </p>
+          <p className="mb-3">Thanks for your interest in this project! I&apos;m excited to show you what I&apos;ve built.</p>
+          <p className="mb-3">You&apos;ll be redirected to the live demo in just a moment. Feel free to explore and provide any feedback.</p>
+          <p>If the redirect doesn&apos;t happen automatically, you can click </p>
         </>
         ,
         link: previewUrl,
@@ -64,7 +64,7 @@ const ProjectCard = ({ imgUrl, title, description, tag, gitUrl, previewUrl }) =>
         message: (
           <>
             <p className="mb-3">This project is still in development or the preview is not publicly available yet.</p>
-            <p className="mb-3">I'd be happy to provide more details or a private demo upon request.</p>
+            <p className="mb-3">I&apos;d be happy to provide more details or a private demo upon request.</p>
             <p>Feel free to check out my other projects or contact me for more information!</p>
           </>
         ),
