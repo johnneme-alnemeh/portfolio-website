@@ -112,8 +112,8 @@ const HeroSection = () => {
               {/* portrait frame */}
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-blue-600/20 rounded-2xl blur-lg opacity-70"></div>
               
-              {/* Main portrait container */}
-              <div className="relative w-[280px] h-[350px] md:w-[350px] md:h-[420px] lg:w-[400px] lg:h-[480px] rounded-2xl bg-gradient-to-b from-slate-900 to-slate-800 shadow-2xl border border-white/10 overflow-hidden">
+              {/* Main portrait container - 4:3 aspect ratio */}
+              <div className="relative w-[280px] h-[210px] md:w-[350px] md:h-[262px] lg:w-[400px] lg:h-[300px] rounded-2xl bg-gradient-to-b from-slate-900 to-slate-800 shadow-2xl border border-white/10 overflow-hidden">
                 
                 {/* Subtle lighting effects */}
                 <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-blue-500/10 to-transparent"></div>
@@ -125,9 +125,10 @@ const HeroSection = () => {
                     src="/images/portrait.jpg"
                     alt="John Al-Nemeh - Professional Portrait"
                     className="object-cover w-full h-full transition-all duration-500 hover:scale-[1.02]"
-                    width={500}
-                    height={500}
+                    width={400}
+                    height={300}
                     priority
+                    sizes="(max-width: 768px) 280px, (max-width: 1200px) 350px, 400px"
                   />
                 </div>
                 
