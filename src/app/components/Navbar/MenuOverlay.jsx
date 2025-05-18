@@ -1,15 +1,17 @@
-import NavLink from "./NavLink";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
 
-const MenuOverlay = ({ links, handleScroll }) => (
+const MenuOverlay = ({ links, handleScroll, onLinkClick }) => (
   <div className="flex flex-col items-center py-4 space-y-4 bg-[#0b0724] bg-opacity-90 text-white">
     <ul className="space-y-4">
       {links.map(({ title, path }, index) => (
         <li key={index}>
           <button
-            onClick={() => handleScroll(path)}
-            className="block py-2 pl-3 pr-4 text-white sm:text-xl rounded md:bg-transparent md:p-0 hover:text-[#ADB7BE]"
+            onClick={() => {
+              handleScroll(path);
+              onLinkClick && onLinkClick();
+            }}
+            className="block w-full py-2 pl-3 pr-4 text-white text-left sm:text-xl rounded md:bg-transparent md:p-0 hover:text-[#ADB7BE] transition-colors"
           >
             {title}
           </button>

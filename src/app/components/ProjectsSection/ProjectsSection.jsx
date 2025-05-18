@@ -47,13 +47,18 @@ const ProjectsSection = () => {
 
   const renderPaginationDots = () => {
     return Array.from({ length: totalPages }, (_, index) => (
-      <span
+      <button
         key={index + 1}
-        className={`w-3 h-3 flex items-center justify-center rounded-full ${
-          currentPage === index + 1 ? "bg-white" : "bg-gray-500"
-        } cursor-pointer`}
+        className={`w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 ${
+          currentPage === index + 1 
+            ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white font-medium' 
+            : 'bg-white/5 hover:bg-white/20 text-gray-300'
+        }`}
         onClick={() => handlePageChange(index + 1)}
-      ></span>
+        aria-label={`Page ${index + 1}`}
+      >
+        {index + 1}
+      </button>
     ));
   };
 
@@ -66,14 +71,29 @@ const ProjectsSection = () => {
 
   return (
     <section
-      className="p-6 pb-24 border shadow-lg bg-blue-500/10 backdrop-blur-lg border-blue-500/20"
+      className="relative p-8 pb-24 overflow-hidden bg-gradient-to-b from-[#0a0a23] to-[#100b31] rounded-3xl shadow-2xl"
       id="projects"
       ref={ref}
     >
-      <h2 className="mt-4 mb-8 text-4xl font-bold text-center text-[#c572e2] md:mb-12">
-        My Projects
-      </h2>
-      <div className="flex items-center justify-center gap-4 my-6">
+      {/* Background decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
+        <div className="absolute w-64 h-64 bg-purple-600 rounded-full -top-10 -left-10 blur-3xl"></div>
+        <div className="absolute w-64 h-64 bg-blue-600 rounded-full -bottom-10 -right-10 blur-3xl"></div>
+        <div className="absolute w-32 h-32 bg-pink-600 rounded-full top-1/2 left-1/4 blur-2xl"></div>
+      </div>
+      
+      {/* Section header with animated gradient text */}
+      <div className="relative mb-12">
+        <h2 className="text-5xl font-bold text-center md:text-6xl">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 animate-gradient-x">
+            My Projects
+          </span>
+        </h2>
+        <div className="w-24 h-1 mx-auto mt-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"></div>
+      </div>
+      
+      {/* Filter tabs with modern design */}
+      <div className="relative z-10 flex items-center justify-center gap-2 my-8 overflow-x-auto md:gap-4 no-scrollbar">
         {tags.map((tag) => (
           <ProjectTag
             key={tag}
@@ -83,14 +103,17 @@ const ProjectsSection = () => {
           />
         ))}
       </div>
-      <div className="grid gap-8 md:grid-cols-3 md:gap-12">
+      
+      {/* Projects grid with responsive layout */}
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 md:gap-8">
         {currentProjects.map((project, index) => (
           <motion.div
             key={project.id}
             variants={cardVariants}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
-            transition={{ duration: 0.3, delay: index * 0.4 }}
+            transition={{ duration: 0.3, delay: index * 0.2 }}
+            className="h-full"
           >
             <ProjectCard
               title={project.title}
@@ -103,23 +126,56 @@ const ProjectsSection = () => {
           </motion.div>
         ))}
       </div>
-      <div className="flex items-center justify-center mt-8 space-x-4">
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-          className="p-2 text-white bg-gray-800 rounded-full hover:bg-gray-700"
-        >
-          <FaChevronLeft className="w-6 h-6" />
-        </button>
-        <div className="flex space-x-2">{renderPaginationDots()}</div>
-        <button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          className="p-2 text-white bg-gray-800 rounded-full hover:bg-gray-700"
-        >
-          <FaChevronRight className="w-6 h-6" />
-        </button>
-      </div>
+      
+      {/* Empty state when no projects match filter */}
+      {currentProjects.length === 0 && (
+        <div className="flex flex-col items-center justify-center p-12 mt-8 text-center">
+          <div className="p-6 mb-4 text-4xl bg-blue-500/10 rounded-full">
+            🔍
+          </div>
+          <h3 className="mb-2 text-xl font-semibold text-white">No projects found</h3>
+          <p className="text-gray-400">Try selecting a different category</p>
+        </div>
+      )}
+      
+      {/* pagination controls */}
+      {filteredProjects.length > 0 && (
+        <div className="flex items-center justify-center mt-12 space-x-4">
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="flex items-center justify-center w-10 h-10 transition-all duration-300 bg-white/5 backdrop-blur-md rounded-full hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Previous page"
+          >
+            <FaChevronLeft className="w-4 h-4 text-white" />
+          </button>
+          
+          <div className="flex items-center space-x-3">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index + 1}
+                onClick={() => handlePageChange(index + 1)}
+                className={`relative w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 ${currentPage === index + 1 
+                  ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white' 
+                  : 'bg-white/5 hover:bg-white/20 text-gray-300'}`}
+                aria-label={`Page ${index + 1}`}
+                aria-current={currentPage === index + 1 ? 'page' : undefined}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+          
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="flex items-center justify-center w-10 h-10 transition-all duration-300 bg-white/5 backdrop-blur-md rounded-full hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Next page"
+          >
+            <FaChevronRight className="w-4 h-4 text-white" />
+          </button>
+        </div>
+      )}
     </section>
   );
 };
