@@ -138,9 +138,9 @@ const ResumePage = () => {
         {/* Back Button */}
         <button
           onClick={() => router.push('/')}
-          className="fixed top-4 left-4 z-10 flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-full hover:bg-gray-700 transition-all duration-200 shadow-lg"
+          className="flex fixed top-4 left-4 z-10 items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-full shadow-lg transition-all duration-200 hover:bg-gray-700"
         >
-          <FiArrowLeft className="w-5 h-5 mr-2" />
+          <FiArrowLeft className="mr-2 w-5 h-5" />
           Back to Home
         </button>
         {/* Header */}
@@ -295,7 +295,7 @@ const ResumePage = () => {
                   <motion.div key={index} className="relative pb-6 pl-6 border-l-2 border-blue-500/30" variants={itemVariants}>
                     <div className="absolute top-1 -left-2 w-4 h-4 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full ring-4 ring-gray-800"></div>
                     <h4 className="text-lg font-semibold text-white">{edu.degree}</h4>
-                    <p className="text-blue-300">{edu.institution}</p>
+                    <p className="text-purple-400">{edu.institution}</p>
                     <span className="inline-block px-2 py-1 mt-1 text-xs text-gray-300 bg-gray-700 rounded-full">
                       {edu.period}
                     </span>
