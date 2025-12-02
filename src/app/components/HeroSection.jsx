@@ -2,7 +2,7 @@
 import React, { Suspense } from "react";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
-import { MdOutlineDownloading } from "react-icons/md";
+import { MdOutlineDownloading, MdOutlineExplore } from "react-icons/md";
 import { useToast } from "../hooks/useToast";
 import { motion } from "framer-motion";
 
@@ -11,12 +11,12 @@ const HeroSection = () => {
 
   const handleDownload = async () => {
     try {
-      const response = await fetch("/JohnAlNemehResume.pdf");
+      const response = await fetch("/JohnAlnemehCV.pdf");
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = "JohnAlNemehResume.pdf";
+      link.download = "JohnAlnemehCV.pdf";
       link.click();
       window.URL.revokeObjectURL(url);
       
@@ -82,7 +82,7 @@ const HeroSection = () => {
             </motion.div>
             
             <motion.div
-              className="mt-10"
+              className="flex flex-wrap gap-4 justify-center mt-10 lg:justify-start"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.9 }}
@@ -97,6 +97,16 @@ const HeroSection = () => {
                 </span>
                 <div className="absolute inset-0 bg-white opacity-0 transition-opacity duration-300 group-hover:opacity-20"></div>
               </button>
+              <a
+                href="/resume"
+                className="overflow-hidden relative px-8 py-3 font-medium text-white bg-gradient-to-r from-pink-500 to-purple-500 rounded-full transition-all duration-300 group hover:shadow-lg hover:shadow-pink-500/30"
+              >
+                <span className="flex relative z-10 items-center">
+                  Explore Interactive Resume
+                  <MdOutlineExplore className="ml-2 text-xl" />
+                </span>
+                <div className="absolute inset-0 bg-white opacity-0 transition-opacity duration-300 group-hover:opacity-20"></div>
+              </a>
             </motion.div>
           </motion.div>
           
