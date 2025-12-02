@@ -243,7 +243,7 @@ const ResumePage = () => {
                 {experiences.map((exp, index) => (
                   <motion.div
                     key={index}
-                    className="relative pb-8 pl-6 border-l-2 border-purple-500/30 last:pb-0 last:border-l-0 group"
+                    className="relative pb-8 pl-6 border-l-2 border-purple-500/30 group"
                     variants={itemVariants}
                   >
                     <div className="absolute top-1 -left-2 w-4 h-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full ring-4 ring-gray-800"></div>
@@ -279,7 +279,7 @@ const ResumePage = () => {
                     className="relative pb-6 pl-6 border-l-2 border-blue-500/30"
                     variants={itemVariants}
                   >
-                    <div className="absolute top-1 -left-2 w-4 h-4 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full ring-4 ring-gray-800"></div>
+                    <div className="absolute top-1 -left-2 w-4 h-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full ring-4 ring-gray-800"></div>
                     <h4 className="text-lg font-semibold text-white">{project.title}</h4>
                     <p className="mt-2 text-gray-300 white-space-pre-line">{project.description}</p>
                   </motion.div>
@@ -293,7 +293,7 @@ const ResumePage = () => {
               <div className="space-y-6">
                 {education.map((edu, index) => (
                   <motion.div key={index} className="relative pb-6 pl-6 border-l-2 border-blue-500/30" variants={itemVariants}>
-                    <div className="absolute top-1 -left-2 w-4 h-4 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full ring-4 ring-gray-800"></div>
+                    <div className="absolute top-1 -left-2 w-4 h-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full ring-4 ring-gray-800"></div>
                     <h4 className="text-lg font-semibold text-white">{edu.degree}</h4>
                     <p className="text-purple-400">{edu.institution}</p>
                     <span className="inline-block px-2 py-1 mt-1 text-xs text-gray-300 bg-gray-700 rounded-full">
